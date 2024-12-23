@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Home.css */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+h1, h2 {
+    transition: color 0.3s;
+}
+
+h1:hover, h2:hover {
+    color: #1D4ED8; /* Change color on hover */
+}
+
+footer {
+    border-top: 1px solid #eaeaea;
+    padding-top: 1rem;
+    margin-top: 2rem;
+}
