@@ -76,6 +76,14 @@ Follow the steps below to run the application locally.
 
 ## Screenshots
 
+![Home](https://github.com/Rushikesh-Satpute/Hotel-Management/images/img1.png)
+
+![Book Hotel](https://github.com/Rushikesh-Satpute/Hotel-Management/images/img2.png)
+
+![Register user](https://github.com/Rushikesh-Satpute/Hotel-Management/images/img1.png)
+
+![Book Room](https://github.com/Rushikesh-Satpute/Hotel-Management/images/img1.png)
+
 ### Dashboard
 [Add a screenshot of the dashboard here.]
 
