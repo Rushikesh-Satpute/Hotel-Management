@@ -81,18 +81,6 @@ Follow the steps below to run the application locally.
 
 ### Room Booking
 ![Register user](https://raw.githubusercontent.com/Rushikesh-Satpute/Hotel-Management/refs/heads/main/images/img2.png)
-=======
-![Home](https://raw.githubusercontent.com/Rushikesh-Satpute/Hotel-Management/refs/heads/main/images/img1.png)
-
-![Book Hotel](https://raw.githubusercontent.com/Rushikesh-Satpute/Hotel-Management/refs/heads/main/images/img2.png)
-
-![Register user](https://raw.githubusercontent.com/Rushikesh-Satpute/Hotel-Management/refs/heads/main/images/img1.png)
-
-![Book Room](https://raw.githubusercontent.com/Rushikesh-Satpute/Hotel-Management/refs/heads/main/images/img1.png)
-
-### Dashboard
-[Add a screenshot of the dashboard here.]
->>>>>>> 28dc63d660dab481a49fa3561fb94ede3142332f
 
 ### Room Management
 ![Book Management](https://raw.githubusercontent.com/Rushikesh-Satpute/Hotel-Management/refs/heads/main/images/img5.png)
@@ -104,7 +92,7 @@ Follow the steps below to run the application locally.
 ![Register user](https://raw.githubusercontent.com/Rushikesh-Satpute/Hotel-Management/refs/heads/main/images/img3.png)
 
 ## Live Demo
-[Hotel Management System Live](your-deployed-site-link)
+[Visit Site](https://hotel-managemnt.vercel.app)
 
 ## Folder Structure
 ```
