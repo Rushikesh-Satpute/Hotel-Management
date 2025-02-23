@@ -1,0 +1,3 @@
+[submodule "HotelMng"]
+	path = HotelMng
+	url = https://github.com/Rushikesh-Satpute/HotelMng.git
