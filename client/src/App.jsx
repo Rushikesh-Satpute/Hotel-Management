@@ -16,16 +16,17 @@ import About from "./About";
 import Contact from "./Contact";
 import BookingList from "./BookingList";
 import BookingPage from "./HotelBookingPage";
+import DefaultLayout from "./components/DefaultLayout";
 
 function App() {
 
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLogout = () => {
     setIsAuthenticated(false);
     alert("You have been logged out.");
   };
-  const [getTheme, setTheme] = useState(localStorage.getItem('theme') || 'Light');
+  const [getTheme, setTheme] = useState(localStorage.getItem('theme') || 'Dark');
 
   useEffect(() => {
     document.body.classList.toggle('dark', getTheme === 'Dark');
@@ -46,14 +47,8 @@ function App() {
   return (
     <>
       <Router>
-        <div className="bg-cover bg-center dark:bg-[url('./bg.jpg')] bg-[url('./bg.jpg')]">
-          <div className="flex w-screen absolute justify-center dark:hidden">
-            <picture>
-              <source srcSet="https://tailwindcss.com/_next/static/media/docs@30.8b9a76a2.avif" type="image/avif" />
-              <img src="https://tailwindcss.com/_next/static/media/docs@tinypng.d9e4dcdc.png" alt="" className="w-[71.75rem] absolute max-w-none dark:hidden" decoding="async" />
-            </picture>
-          </div>
-          <Navbar title="Hotel Management" theme={getTheme} toggle={onToggle} />
+        <DefaultLayout>
+        <Navbar title="Hotel Management" theme={getTheme} toggle={onToggle} />
           <Routes>
             <Route path="/" element={<Home theme={getTheme} />} />
             <Route path="/Register" element={<MyForm title="Customer Registration" />} />
@@ -65,10 +60,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/bookings" element={<BookingList />} />
-           
           </Routes>
           <Footer isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-        </div>
+        </DefaultLayout>
       </Router>
     </>
   );

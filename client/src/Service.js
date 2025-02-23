@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const Service = () => {
     return (
         <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-slate-900">
             <HeroSection />
-            <Testimonials />
-            <Footer />
         </div>
     );
 };
@@ -41,41 +38,6 @@ const ModelsSection = () => (
             ))}
         </div>
     </div>
-);
-
-const Testimonials = () => (
-    <div className="my-10 px-4">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-white text-center mb-6">What Our Guests Say</h2>
-        <Carousel
-            showArrows={true}
-            autoPlay={true}
-            infiniteLoop={true}
-            showThumbs={false}
-            interval={3000}
-            transitionTime={500}
-        >
-            {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 space-y-4">
-                    <p className="italic text-gray-600 dark:text-gray-300">{testimonial.text}</p>
-                    <p className="font-bold text-right mt-4">{testimonial.author}</p>
-                </div>
-            ))}
-        </Carousel>
-    </div>
-);
-
-const Footer = () => (
-    <footer className="bg-gray-800 text-white py-6">
-        <div className="text-center space-y-2">
-            <p>&copy; {new Date().getFullYear()} Our Hotel. All rights reserved.</p>
-            <p>
-                For inquiries, contact us at{' '}
-                <a href="mailto:info@rushikeshsatpute.com" className="text-blue-400 hover:underline">
-                    info@rushikeshsatpute.com
-                </a>
-            </p>
-        </div>
-    </footer>
 );
 
 const modelsData = [
@@ -114,23 +76,6 @@ const modelsData = [
         title: "Bookings",
         desc: "Show all bookings.",
         onClick: "/bookings",
-    },
-];
-
-
-
-const testimonials = [
-    {
-        text: "The best hotel experience I've ever had! The staff was friendly, and the service was impeccable.",
-        author: "Jane D.",
-    },
-    {
-        text: "An exceptional stay with luxurious amenities. Highly recommend to anyone looking for comfort!",
-        author: "John S.",
-    },
-    {
-        text: "Absolutely stunning! The ambiance and service made it a memorable trip.",
-        author: "Sarah W.",
     },
 ];
 

@@ -5,8 +5,17 @@ function Home() {
   const navigate = useNavigate();
   const redirect = (key) => {
     switch (key) {
-      case 0:
-        navigate('/Register');
+      case 1:
+        navigate('/Register')
+        break;
+      case 2:
+        navigate('/Book')
+        break;
+      case 3:
+        navigate('/manage_hotels');
+        break;
+      case 4:
+        navigate('/bookings');
         break;
       default:
         break;
@@ -25,9 +34,54 @@ function Home() {
       </div>
 
       {/* Dashboard Features Section */}
-      <div className="container mx-auto max-w-3xl text-center px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-12">
-        {/* Feature 1: Room Management */}
-        <div onClick={() => redirect(0)} className="bg-white border dark:border-0 dark:bg-gray-800 rounded-lg shadow-lg p-4 transform transition hover:scale-105">
+      <div className="container mx-auto max-w-3xl text-center px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-8">
+
+        {/* Feature 1: Guest Registration */}
+        <div onClick={() => redirect(1)} className="bg-white border dark:border-0 dark:bg-gray-800 rounded-lg shadow-lg px-4 py-8 transform transition hover:scale-105">
+          <div className="flex justify-center items-center h-16 w-16 bg-teal-100 dark:bg-teal-600 rounded-full mx-auto">
+
+            <svg className="w-8 h-8 text-teal-600 dark:text-white"
+              fill="currentColor"
+              stroke=""
+              xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" id="user">
+              <path d="M6 7C6 5.89543 6.89543 5 8 5 9.10457 5 10 5.89543 10 7 10 8.10457 9.10457 9 8 9 6.89543 9 6 8.10457 6 7zM8 6C7.44772 6 7 6.44772 7 7 7 7.55228 7.44772 8 8 8 8.55228 8 9 7.55228 9 7 9 6.44772 8.55228 6 8 6zM5.6952 10C5.36398 10 5.00445 10.2376 4.97432 10.6569 4.9517 10.9715 4.97959 11.5787 5.43412 12.1095 5.89642 12.6495 6.70398 13 8 13 9.29602 13 10.1036 12.6495 10.5659 12.1095 11.0204 11.5787 11.0483 10.9715 11.0257 10.6569 10.9956 10.2376 10.636 10 10.3048 10H5.6952zM6.19371 11.4591C6.06795 11.3123 6.00856 11.1482 5.98385 11H10.0162C9.99145 11.1482 9.93205 11.3123 9.8063 11.4591 9.60217 11.6975 9.12822 12 8 12 6.87178 12 6.39784 11.6975 6.19371 11.4591z"></path>
+              <path d="M10.9146 2H11.5C12.3284 2 13 2.67157 13 3.5V13.5C13 14.3284 12.3284 15 11.5 15H4.5C3.67157 15 3 14.3284 3 13.5V3.5C3 2.67157 3.67157 2 4.5 2H5.08535C5.29127 1.4174 5.84689 1 6.5 1H9.5C10.1531 1 10.7087 1.4174 10.9146 2ZM5.08535 3H4.5C4.22386 3 4 3.22386 4 3.5V13.5C4 13.7761 4.22386 14 4.5 14H11.5C11.7761 14 12 13.7761 12 13.5V3.5C12 3.22386 11.7761 3 11.5 3H10.9146C10.7087 3.5826 10.1531 4 9.5 4H6.5C5.84689 4 5.29127 3.5826 5.08535 3ZM6 2.5C6 2.77614 6.22386 3 6.5 3H9.5C9.77614 3 10 2.77614 10 2.5C10 2.22386 9.77614 2 9.5 2H6.5C6.22386 2 6 2.22386 6 2.5Z"></path>
+            </svg>
+          </div>
+          <h3 className="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
+            Guest Registration
+          </h3>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">
+            Add new Guest, make entry in hotel
+          </p>
+        </div>
+
+        {/* Feature 2: Book Room */}
+        <div onClick={() => redirect(2)} className="bg-white border dark:border-0 dark:bg-gray-800 rounded-lg shadow-lg px-4 py-8 transform transition hover:scale-105">
+          <div className="flex justify-center items-center h-16 w-16 bg-yellow-200 dark:bg-yellow-600 rounded-full mx-auto">
+            <svg
+              className="text-yellow-600 dark:text-white"
+              fill="none"
+              height={24}
+              width={24}
+              stroke="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 21H5M5 21H10M5 21V3M10 21H14M10 21V16L8 16C10 13.3333 14 13.3333 16 16L14 16V21M14 21H19M19 21H21M19 21V3M3 3H5M5 3H19M19 3H21M9 6.5H10M14 6.5H15M9 10.5H10M14 10.5H15"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 className="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
+            Room Booking
+          </h3>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">
+            Book your room online easily.
+          </p>
+        </div>
+
+        {/* Feature 3: Room Management */}
+        <div onClick={() => redirect(3)} className="bg-white border dark:border-0 dark:bg-gray-800 rounded-lg shadow-lg px-4 py-8 transform transition hover:scale-105">
           <div className="flex justify-center items-center h-16 w-16 bg-indigo-100 dark:bg-indigo-600 rounded-full mx-auto">
             <svg
               className="text-indigo-600 dark:text-white"
@@ -41,32 +95,12 @@ function Home() {
             Room Management
           </h3>
           <p className="mt-2 text-gray-600 dark:text-gray-400">
-            Seamlessly manage room bookings, check-ins, and availability.
+            Add or update hotel information.
           </p>
         </div>
 
-        {/* Feature 2: Guest Information */}
-        <div onClick={() => redirect(1)} className="bg-white border dark:border-0 dark:bg-gray-800 rounded-lg shadow-lg p-4 transform transition hover:scale-105">
-          <div className="flex justify-center items-center h-16 w-16 bg-teal-100 dark:bg-teal-600 rounded-full mx-auto">
-
-            <svg className="w-8 h-8 text-teal-600 dark:text-white"
-              fill="currentColor"
-              stroke=""
-              xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" id="user">
-              <path d="M6 7C6 5.89543 6.89543 5 8 5 9.10457 5 10 5.89543 10 7 10 8.10457 9.10457 9 8 9 6.89543 9 6 8.10457 6 7zM8 6C7.44772 6 7 6.44772 7 7 7 7.55228 7.44772 8 8 8 8.55228 8 9 7.55228 9 7 9 6.44772 8.55228 6 8 6zM5.6952 10C5.36398 10 5.00445 10.2376 4.97432 10.6569 4.9517 10.9715 4.97959 11.5787 5.43412 12.1095 5.89642 12.6495 6.70398 13 8 13 9.29602 13 10.1036 12.6495 10.5659 12.1095 11.0204 11.5787 11.0483 10.9715 11.0257 10.6569 10.9956 10.2376 10.636 10 10.3048 10H5.6952zM6.19371 11.4591C6.06795 11.3123 6.00856 11.1482 5.98385 11H10.0162C9.99145 11.1482 9.93205 11.3123 9.8063 11.4591 9.60217 11.6975 9.12822 12 8 12 6.87178 12 6.39784 11.6975 6.19371 11.4591z"></path>
-              <path d="M10.9146 2H11.5C12.3284 2 13 2.67157 13 3.5V13.5C13 14.3284 12.3284 15 11.5 15H4.5C3.67157 15 3 14.3284 3 13.5V3.5C3 2.67157 3.67157 2 4.5 2H5.08535C5.29127 1.4174 5.84689 1 6.5 1H9.5C10.1531 1 10.7087 1.4174 10.9146 2ZM5.08535 3H4.5C4.22386 3 4 3.22386 4 3.5V13.5C4 13.7761 4.22386 14 4.5 14H11.5C11.7761 14 12 13.7761 12 13.5V3.5C12 3.22386 11.7761 3 11.5 3H10.9146C10.7087 3.5826 10.1531 4 9.5 4H6.5C5.84689 4 5.29127 3.5826 5.08535 3ZM6 2.5C6 2.77614 6.22386 3 6.5 3H9.5C9.77614 3 10 2.77614 10 2.5C10 2.22386 9.77614 2 9.5 2H6.5C6.22386 2 6 2.22386 6 2.5Z"></path>
-            </svg>
-          </div>
-          <h3 className="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
-            Guest Information
-          </h3>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
-            View and manage guest details, preferences, and history.
-          </p>
-        </div>
-
-        {/* Feature 3: Reports & Analytics */}
-        <div onClick={() => redirect(2)} className="bg-white border dark:border-0 dark:bg-gray-800 rounded-lg shadow-lg p-4 transform transition hover:scale-105">
+        {/* Feature 3: View Bookings */}
+        <div onClick={() => redirect(4)} className="bg-white border dark:border-0 dark:bg-gray-800 rounded-lg shadow-lg px-4 py-8 transform transition hover:scale-105">
           <div className="flex justify-center items-center h-16 w-16 bg-green-100 dark:bg-green-600 rounded-full mx-auto">
 
             <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-green-600 dark:text-white"
@@ -77,14 +111,14 @@ function Home() {
             </svg>
           </div>
           <h3 className="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
-            Reports & Analytics
+            View Bookings
           </h3>
           <p className="mt-2 text-gray-600 dark:text-gray-400">
-            Access insights with advanced reporting tools.
+            Access room booking with detailed information.
           </p>
         </div>
 
-        {/* Feature 4: Staff Management */}
+        {/* Feature 4: Staff Management
         <div onClick={() => redirect(3)} className="bg-white border dark:border-0 dark:bg-gray-800 rounded-lg shadow-lg p-4 transform transition hover:scale-105">
           <div className="flex justify-center items-center h-16 w-16 bg-sky-100 dark:bg-sky-600 rounded-full mx-auto">
 
@@ -102,7 +136,7 @@ function Home() {
           <p className="mt-2 text-gray-600 dark:text-gray-400">
             Organize schedules and optimize workforce operations.
           </p>
-        </div>
+        </div> */}
       </div>
     </section >
   );

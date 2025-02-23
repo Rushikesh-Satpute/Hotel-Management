@@ -46,7 +46,7 @@ function CartModel(props) {
         </div>
 
         <a href="#" className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">{props.title}</a>
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{props.description}</p>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 truncate">{props.description}</p>
 
         <div className="mt-3 flex items-center justify-between">
           <span className="text-xl font-bold text-gray-900 dark:text-white">₹{props.price}</span>

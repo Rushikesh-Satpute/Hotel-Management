@@ -67,7 +67,7 @@ function Navbar(props) {
               About
             </Link>
             <a
-              href="/services"
+              href="/"
               className="block px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               Services
@@ -78,7 +78,7 @@ function Navbar(props) {
             >
               Contact
             </a>
- <label className="inline-flex items-center cursor-pointer mt-2 lg:mt-0 lg:ml-4">
+            <label className="inline-flex items-center cursor-pointer mt-2 lg:mt-0 lg:ml-4">
               <input
                 type="checkbox"
                 name="theme_checkbox"
@@ -90,7 +90,7 @@ function Navbar(props) {
               <span className="ms-3 text-xs2 font-medium text-gray-900 dark:text-gray-300">
                 {props.theme}
               </span>
-            </label> 
+            </label>
           </div>
         </div>
       </div>

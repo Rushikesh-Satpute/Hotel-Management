@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { FaAngleLeft, FaPlus, } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 const HotelBookingForm = () => {
     const navigate = useNavigate();
@@ -30,6 +31,7 @@ const HotelBookingForm = () => {
         checkInDate: '',
         checkOutDate: '',
         roomType: "Standard",
+        registrationNumber: registrationNumber,
     });
 
     // Room types and their respective prices
@@ -41,10 +43,13 @@ const HotelBookingForm = () => {
     const [selectedRoomType, setSelectedRoomType] = useState(roomTypes[0]);
     const [errors, setErrors] = useState({});
 
-    
+
     const toggleModal = () => {
         if (error) {
             setError(null);
+        }
+        if (isModalOpen) {
+            setPreviousBookings([]);
         }
         setIsModalOpen(!isModalOpen);
     }
@@ -66,6 +71,9 @@ const HotelBookingForm = () => {
         if (!formData.phone) newErrors.phone = "Phone number is required.";
         if (!formData.checkInDate) newErrors.checkInDate = "Check-in date is required.";
         if (!formData.checkOutDate) newErrors.checkOutDate = "Check-out date is required.";
+        if (formData.checkInDate && formData.checkOutDate && new Date(formData.checkOutDate) <= new Date(formData.checkInDate)) {
+            newErrors.checkOutDate = "Check-out date must be after check-in date.";
+        }
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -74,9 +82,10 @@ const HotelBookingForm = () => {
         e.preventDefault();
 
         if (validateForm()) {
-            const regNumber = generateRegistrationNumber(formData.name, formData.checkInDate, formData.checkOutDate, selectedRoomType.type);
+            const regNumber = generateRegistrationNumber(formData.name, selectedRoomType.type);
             const isRegistered = await checkUserRegistration();
             const bookingData = {
+                guestName:formData.name,
                 roomType: selectedRoomType.type,
                 guestCount,
                 checkInDate: formData.checkInDate,
@@ -110,7 +119,7 @@ const HotelBookingForm = () => {
         toggleModal();
         try {
             console.log('Booking details sent to server:', bookingDetails);
-            const response = await axios.post('http://localhost:5000/api/bookings', bookingDetails);
+            const response = await axios.post('https://hotelmng.onrender.com/api/bookings', bookingDetails);
             console.log('Server response:', response);
 
             if (response.status === 200 || response.status === 201) {
@@ -132,14 +141,18 @@ const HotelBookingForm = () => {
     };
 
     // Generate unique registration number
-    const generateRegistrationNumber = (guestName, checkInDate, checkOutDate, roomType) => {
-        return `${guestName}-${roomType}-${checkInDate}-${checkOutDate}`.replace(/\s+/g, '-').toUpperCase();
+    const generateRegistrationNumber = (guestName, roomType) => {
+        const shortName = guestName.slice(0, 4).toUpperCase();
+        const shortRoomType = roomType.slice(0, 5).toUpperCase();
+        const uniqueId = uuidv4().slice(0, 8).toUpperCase(); // Short unique ID
+
+        return `${shortName}${shortRoomType}-${uniqueId}`;
     };
 
     // Check if user is registered
     const checkUserRegistration = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/users/check-user', { phoneNumber: formData.phone });
+            const response = await axios.post('https://hotelmng.onrender.com/api/users/check-user', { phoneNumber: formData.phone });
             return response.data.registered;
         } catch (error) {
             console.error("Error checking registration status:", error);
@@ -149,8 +162,8 @@ const HotelBookingForm = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center py-12 px-6">
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-3xl relative">
+        <div className="min-h-screen flex items-center justify-center py-12 px-6 bg-gray-100 dark:bg-inherit antialiased">
+            <div className="bg-white dark:bg-gray-800 p-8 dark:border-0 border rounded-lg shadow-xl w-full max-w-3xl relative">
                 {/* Button to show modal */}
                 <button
                     onClick={goBack}
@@ -211,10 +224,14 @@ const HotelBookingForm = () => {
                                         {dateField.label}
                                     </label>
                                     <input
-                                        value={formData[dateField.field]}
+                                        type="number"
+                                        name="guestCount"
+                                        value={guestCount}
+                                        min = "1"
                                         onChange={(e) => setGuests(Number(e.target.value))}
                                         className="mt-2 p-3 w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500"
                                     />
+
                                     {errors[dateField.field] && (
                                         <p className="text-red-600 text-sm mt-2">{errors[dateField.field]}</p>
                                     )}
@@ -286,7 +303,8 @@ const HotelBookingForm = () => {
                     <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl w-96">
                         <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Room Booking Details</h3>
                         <ul className="space-y-4 text-gray-700 dark:text-gray-300">
-                            <li><strong>Registration Number:</strong> {formData.registrationNumber}</li>
+                            <li><strong>Registration Number:</strong> <br />{registrationNumber}</li>
+                            {console.log(registrationNumber)}
                             <li><strong>Name:</strong> {formData.name}</li>
                             <li><strong>Email:</strong> {formData.email}</li>
                             <li><strong>Phone:</strong> {formData.phone}</li>

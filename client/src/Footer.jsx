@@ -31,7 +31,7 @@ const Footer = ({ isAuthenticated, onLogout }) => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 text-gray-700 dark:text-gray-300 py-12">
+    <footer className="bg-gradient-to-b from-gray-50 to-gray-300 dark:from-gray-900 dark:to-gray-800 text-gray-700 dark:text-gray-300 py-12">
       <div className="container mx-auto px-6">
         {/* Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -48,7 +48,7 @@ const Footer = ({ isAuthenticated, onLogout }) => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xl transition-transform duration-300 transform hover:scale-110"
+                  className="text-xl transition-transform duration-300 hover:scale-110"
                   title={link.title}
                 >
                   {link.icon}
@@ -81,7 +81,7 @@ const Footer = ({ isAuthenticated, onLogout }) => {
             <ul className="space-y-2">
               <li className="flex items-center gap-2">
                 <FaPhoneAlt />
-                <span>+91 7856247890</span>
+                <span>+91 1234567890</span>
               </li>
               <li className="flex items-center gap-2">
                 <FaEnvelope />
@@ -136,9 +136,7 @@ const Footer = ({ isAuthenticated, onLogout }) => {
               Login
             </a>
           )}
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
-            © {new Date().getFullYear()} Rushikesh Satpute. All rights reserved.
-          </p>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">  © {new Date().getFullYear()} Developed with ❤️ by the <span className="underline dark:text-gray-200">@Rushikesh Satpute </span></p>
         </div>
       </div>
     </footer>
