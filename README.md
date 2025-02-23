@@ -76,7 +76,6 @@ Follow the steps below to run the application locally.
 
 ## Screenshots
 
-<<<<<<< HEAD
 ### Home
 ![Home](https://raw.githubusercontent.com/Rushikesh-Satpute/Hotel-Management/refs/heads/main/images/img1.png)
 
